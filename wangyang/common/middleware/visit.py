@@ -19,3 +19,5 @@ class VisitCount(object):
                         request.META['REMOTE_ADDR'] = real_ip
 
             ip = request.META['REMOTE_ADDR']
+        print 111
+        print request.META['REMOTE_ADDR']

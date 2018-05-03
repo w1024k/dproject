@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gunicorn',
+    'common',
     'lm',
 )
 
@@ -49,6 +50,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'common.middleware.message.AdminOnlyMessageMiddleware',
+    'common.middleware.visit.VisitCount',
 )
 
 ROOT_URLCONF = 'wangyang.urls'
@@ -98,6 +101,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# #collect目录
+# STATIC_ROOT = '/static'
 
 ERROR = {
     'SUCC': {'code': '10000', 'msg': u'成功'},

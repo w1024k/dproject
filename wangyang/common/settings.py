@@ -21,5 +21,5 @@ class CountEventEnum:
 
 
 COUNT_EVENT_CHOICES = (
-    (CountEventEnum.URL_VISIT, u'链接访问数')
+    (CountEventEnum.URL_VISIT, u'链接访问数'),
 )
