@@ -13,6 +13,7 @@ class VisitCount(object):
 
         # 被nginx代理时取真实IP
         if request.META.has_key('HTTP_X_FORWARDED_FOR'):
+            print 2222222222
             forwarded_for_ips = request.META['HTTP_X_FORWARDED_FOR'].split(',')
             if len(forwarded_for_ips) >= 2:
                 real_ip = forwarded_for_ips[0].strip()
