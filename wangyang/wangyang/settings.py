@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import djcelery
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gunicorn',
+    'djcelery',
     'common',
     'lm',
 )
@@ -77,10 +79,16 @@ WSGI_APPLICATION = 'wangyang.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'wangyang',
+        'USER': 'root',
+        'PASSWORD': 'mysql',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -102,7 +110,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 # #collect目录
 # STATIC_ROOT = '/static'
 
@@ -122,3 +129,20 @@ ERROR = {
     'OVERFLOW_MAX_LENGTH_ERR': {'code': '10014', 'msg': u'超出内容长度限制'},
     'UNSUPPORT_ERR': {'code': '10016', 'msg': u'不支持该功能'},
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "127.0.0.1:6379:1",
+        'TIMEOUT': 60,
+        "OPTIONS": {
+            "PASSWORD": "redis",
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+djcelery.setup_loader()
+BROKER_URL = 'redis://:redis@127.0.0.1:6379/0'
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_IGNORE_RESULT = True

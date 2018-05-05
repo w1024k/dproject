@@ -21,5 +21,7 @@ class CountEventEnum:
 
 
 COUNT_EVENT_CHOICES = (
-    (CountEventEnum.URL_VISIT, u'链接访问数'),
+    (CountEventEnum.URL_VISIT, u'网站总访问数'),
 )
+
+URL_VISIT_DAILY_COUNT_KEY = "url.visit.daily.count"

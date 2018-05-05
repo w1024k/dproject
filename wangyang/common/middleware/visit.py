@@ -1,8 +1,9 @@
 # coding: utf-8
 
 
-from django.conf import settings
-from common.models import UrlVisitCount
+from common import settings
+from common.models import UrlVisitCount, DailyCount
+from common.tasks import daily_visit_increase
 
 
 class VisitCount(object):
@@ -18,6 +19,6 @@ class VisitCount(object):
                     if real_ip:
                         request.META['REMOTE_ADDR'] = real_ip
 
-            ip = request.META['REMOTE_ADDR']
-        print 111
-        print request.META['REMOTE_ADDR']
+        ip = request.META['REMOTE_ADDR']
+        print ip,111
+        daily_visit_increase.delay(ip=ip, path=path)
