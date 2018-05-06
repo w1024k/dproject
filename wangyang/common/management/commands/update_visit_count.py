@@ -7,6 +7,8 @@ from common import settings
 from datetime import datetime, timedelta
 
 
+# 0 0 * * * su wang;/home/wang/.pyenv/versions/web/bin/python /home/wang/repositories/dproject/wangyang/manage.py update_visit_count;exit
+
 class Command(NoArgsCommand):
     help = '更新每日每日站点访问数统计'
 
@@ -17,6 +19,7 @@ class Command(NoArgsCommand):
         try:
             DailyCount.objects.create(date=yesterday, count=count, event=settings.CountEventEnum.URL_VISIT)
         except Exception as e:
+            # TODO 之后加一个发送到微信的功能
             print e
         else:
             r.set(settings.URL_VISIT_DAILY_COUNT_KEY, 0)

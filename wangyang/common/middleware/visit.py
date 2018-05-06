@@ -11,7 +11,7 @@ class VisitCount(object):
         path = request.META['PATH_INFO']
         print path.startswith('/wangyang/admin/')
 
-        # 被nginx代理时取真实IP
+        # nginx代理导致取得是127.0.0.1
         if request.META.has_key('HTTP_X_FORWARDED_FOR'):
 
             forwarded_for_ips = request.META['HTTP_X_FORWARDED_FOR'].split(',')
