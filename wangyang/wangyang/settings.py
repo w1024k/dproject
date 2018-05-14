@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'djcelery',
     'common',
     'lm',
+    'weixin',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -177,17 +178,17 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'formatter': 'standard',
         },
-        'console': {  # 输出到控制台
-            'level': 'ERROR',  # 设为debug时,一些数据的查询信息之类的信息都会被打印
-            'class': 'logging.StreamHandler',
-            'formatter': 'standard',
-        },
+        # 'console': {  # 输出到控制台
+        #     'level': 'ERROR',  # 设为debug时,一些数据的查询信息之类的信息都会被打印
+        #     'class': 'logging.StreamHandler',
+        #     'formatter': 'standard',
+        # },
     },
     'loggers': {  # logging管理器
         'django': {
-            'handlers': ['console', 'info_handler'],
-            'level': 'DEBUG',
-            'propagate': False
+            'handlers': ['info_handler'],
+            'level': 'ERROR',
+            # 'propagate': False
         },
         'django.request': {
             'handlers': ['mail_admins'],
@@ -219,3 +220,7 @@ EMAIL_HOST_USER = 'wangyangpublic@163.com'  # 我的邮箱帐号
 EMAIL_HOST_PASSWORD = 'wangyang001'  # 授权码
 EMAIL_USE_TLS = True  # 开启安全链接
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # 设置发件人
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# 搜集目录
+STATIC_ROOT = '/www/media/wang/static/'

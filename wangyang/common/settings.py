@@ -1,5 +1,4 @@
 # coding: utf-8
-
 class StateEnum:
     VALID = 0
     TEMPORARY = 1
@@ -10,6 +9,34 @@ STATE_CHOICES = (
     (StateEnum.VALID, u'有效'),
     (StateEnum.TEMPORARY, u'临时记录'),
     (StateEnum.DELETED, u'删除'),
+)
+
+
+class SupplierEnum:
+    WECHAT = 1
+    ALIPAY = 2
+    SINA = 3
+    OTHER = 4
+
+
+SUPPLIER_CHOICES = (
+    (SupplierEnum.WECHAT, u'微信'),
+    (SupplierEnum.ALIPAY, u'支付宝'),
+    (SupplierEnum.SINA, u'新浪'),
+    (SupplierEnum.OTHER, u'其他'),
+)
+
+
+class SexEnum:
+    MAN = 1
+    WOMAN = 2
+    OTHER = 0
+
+
+SEX_CHOICES = (
+    (SexEnum.MAN, '男'),
+    (SexEnum.WOMAN, '女'),
+    (SexEnum.OTHER, '其他'),
 )
 
 DEFAULT_IP = '0.0.0.0'
@@ -25,3 +52,8 @@ COUNT_EVENT_CHOICES = (
 )
 
 URL_VISIT_DAILY_COUNT_KEY = "url.visit.daily.count"
+
+ROBOT_API = 'http://api.qingyunke.com/api.php?key=free&appid=0&msg='
+ROBOT_API_ERROR = u'机器人客服打盹了'
+
+DEFAULT_AVATAR_PATH = '/static/images/avatar.jpg'
