@@ -6,6 +6,8 @@ from wechatpy.exceptions import InvalidSignatureException
 from weixin import settings, tasks
 import wechatpy
 from common.tools import auto_answer
+from common.models import OpenUser
+from common import settings as common_setting
 
 
 def notify(request):
@@ -34,7 +36,8 @@ def notify(request):
             return HttpResponse(reply.render())
         # 取消关注
         elif isinstance(receive_msg, wechatpy.events.UnsubscribeEvent):
-            print receive_msg.source
+            OpenUser.objects.filter(supplier=common_setting.SupplierEnum.WECHAT, uid=receive_msg.source).update(
+                state=common_setting.StateEnum.DELETED)
             return HttpResponse('')
 
         # 扫描带参数二维码(已关注,未关注,未关注微信会提示关注) 可用于扫码登录

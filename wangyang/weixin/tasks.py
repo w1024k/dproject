@@ -28,6 +28,6 @@ def create_weixin_user(uid):
             user=user,
             uid=uid,
         )
-        Profile.objects.create()
+        Profile.objects.create(user=user)
     else:
         open_user.state = settings.StateEnum.VALID

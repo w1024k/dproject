@@ -29,7 +29,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, primary_key=True, verbose_name=u'关联User')
     sex = models.PositiveSmallIntegerField(default=settings.SexEnum.MAN, choices=settings.SEX_CHOICES,
                                            verbose_name=u'性别'),
-    mobile = models.CharField(default=u'', max_length=11, db_index=True, verbose_name='电话号码')
+    mobile = models.CharField(default=u'', max_length=11, db_index=True, verbose_name=u'电话号码')
     wechat = models.CharField(default=u'', max_length=32, blank=True, verbose_name=u'微信')
 
     address = models.CharField(default=u'', max_length=64, blank=True, verbose_name=u'地址')
