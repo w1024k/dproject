@@ -8,26 +8,32 @@ from django.contrib.auth.models import User
 from weixin.utils import tools
 import logging
 import wechatpy
+from django.db import transaction
 
 django_log = logging.error('django')
 
 
 @task
 def create_weixin_user(uid):
-    client = wechatpy.WeChatClient(appid=weixin_setting.APPID, secret=weixin_setting.APPSECRET,
-                                   access_token=tools.get_access_token())
+    client = tools.WeixinClient.instance()
     weixin_user = wechatpy.client.api.WeChatUser(client)
     try:
         open_user = OpenUser.objects.get(supplier=settings.SupplierEnum.WECHAT, uid=uid)
     except OpenUser.DoesNotExist:
         username = 'weixin_%s' % create_random_string(digits=10)
-        user = User.objects.create(first_name=weixin_user['nickname'], username=username)
-        OpenUser.objects.create(
-            supplier=settings.SupplierEnum.WECHAT,
-            nickname=weixin_user['nickname'],
-            user=user,
-            uid=uid,
-        )
-        Profile.objects.create(user=user)
+        with transaction.atomic():
+            user = User.objects.create(first_name=weixin_user['nickname'], username=username)
+            OpenUser.objects.create(
+                supplier=settings.SupplierEnum.WECHAT,
+                nickname=weixin_user['nickname'],
+                user=user,
+                uid=uid,
+            )
+            Profile.objects.create(user=user,
+                                   avatar_path=weixin_user['headimgurl'],
+                                   address='-'.join([weixin_user['country'], weixin_user['province'], weixin_user['city']]),
+                                   sex=weixin_user['sex'] if weixin_user['sex'] in [settings.SexEnum.WOMAN,
+                                                                                    settings.SexEnum.MAN] else settings.SexEnum.OTHER, )
     else:
         open_user.state = settings.StateEnum.VALID
+        open_user.save()
