@@ -6,13 +6,13 @@ TOKEN = 'wangyang'
 APPID = 'wx998081831c4cc310'
 APPSECRET = 'wx998081831c4cc310'
 
-if hasattr(settings, TOKEN):
+if hasattr(settings, "TOKEN"):
     TOKEN = settings.TOKEN
 
-if hasattr(settings, APPID):
+if hasattr(settings, "APPID"):
     APPID = settings.APPID
 
-if hasattr(settings, APPSECRET):
+if hasattr(settings, "APPSECRET"):
     APPSECRET = settings.APPSECRET
 
 ERROR = {}
