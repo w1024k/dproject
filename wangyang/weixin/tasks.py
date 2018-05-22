@@ -16,7 +16,7 @@ django_log = logging.error('django')
 @task
 def create_weixin_user(openid):
     client = tools.WeixinClient.instance()
-    weixin_user = wechatpy.client.api.WeChatUser(client)
+    weixin_user = wechatpy.client.api.WeChatUser(client).get(openid)
     try:
         open_user = OpenUser.objects.get(supplier=settings.SupplierEnum.WECHAT, openid=openid)
     except OpenUser.DoesNotExist:
