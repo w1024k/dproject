@@ -4,16 +4,16 @@ from django.conf import settings
 TOKEN = 'wangyang'
 
 APPID = 'wx998081831c4cc310'
-APPSECRET = 'wx998081831c4cc310'
+APPSECRET = 'f022d5490574a310cdd57a311670b0e1'
 
-if hasattr(settings, "TOKEN"):
-    TOKEN = settings.TOKEN
-
-if hasattr(settings, "APPID"):
-    APPID = settings.APPID
-
-if hasattr(settings, "APPSECRET"):
-    APPSECRET = settings.APPSECRET
+# if hasattr(settings, "TOKEN"):
+#     TOKEN = settings.TOKEN
+#
+# if hasattr(settings, "APPID"):
+#     APPID = settings.APPID
+#
+# if hasattr(settings, "APPSECRET"):
+#     APPSECRET = settings.APPSECRET
 
 ERROR = {}
 

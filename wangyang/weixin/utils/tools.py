@@ -14,11 +14,8 @@ class WeixinClient(wechatpy.WeChatClient):
         if not hasattr(WeixinClient, '_instance'):
             appid = settings.APPID
             secret = settings.APPSECRET
-            print appid, 111
-            print secret, 222
             access_token = WeixinClient(appid, secret).get_access_token()
-            setattr(WeixinClient, '_instance',
-                    WeixinClient(appid, secret, access_token=access_token))
+            setattr(WeixinClient, '_instance', WeixinClient(appid, secret, access_token=access_token))
         return getattr(WeixinClient, '_instance')
 
     def get_access_token(self):
