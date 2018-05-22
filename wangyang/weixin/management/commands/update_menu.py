@@ -3,7 +3,6 @@
 
 import pprint
 
-
 from django.core.management import BaseCommand
 from weixin.utils import tools
 import ujson as json
@@ -12,15 +11,15 @@ menu_data = {
     "button": [
         {
             "type": "location_select",
-            "name": u"今日天气",
+            "name": "今日天气",
             "key": "HELLO_ALWAYS_WEATHER"
         },
         {
-            "name": u"菜单",
+            "name": "菜单",
             "sub_button": [
                 {
                     "type": "view",
-                    "name": u"搜索",
+                    "name": "搜索",
                     "url": "http://www.baidu.com/"
                 },
                 {
@@ -30,7 +29,7 @@ menu_data = {
                 },
                 {
                     "type": "click",
-                    "name": u"昨日访问",
+                    "name": "昨日访问",
                     "key": "HELLO_ALWAYS_YESTERDAY_VISIT"
                 },
             ]
@@ -44,7 +43,7 @@ class Command(BaseCommand):
     '''
 
     def handle(self, *args, **options):
-        menu_data_json = json.dumps(menu_data)
+        menu_data_json = json.dumps(menu_data, ensure_ascii=False)
         pprint.pprint(menu_data)
 
         client = tools.WeixinClient.instance()
