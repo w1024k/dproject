@@ -33,7 +33,7 @@ class Profile(models.Model):
     wechat = models.CharField(default=u'', max_length=32, blank=True, verbose_name=u'微信')
 
     address = models.CharField(default=u'', max_length=64, blank=True, verbose_name=u'地址')
-    avatar_path = models.CharField(default=settings.DEFAULT_AVATAR_PATH, max_length=128, verbose_name=u'头像文件')
+    avatar_path = models.CharField(default=settings.DEFAULT_AVATAR_PATH, max_length=256, verbose_name=u'头像文件')
     intro = models.TextField(default=u'', blank=True, verbose_name=u'个人简介')
 
     class Meta:

@@ -29,7 +29,7 @@ def create_weixin_user(openid):
                 user=user,
                 openid=openid,
             )
-
+            print weixin_user['headimgurl']
             profile = Profile.objects.create(user=user,
                                              avatar_path=weixin_user['headimgurl'],
                                              address='-'.join([weixin_user['country'], weixin_user['province'],
