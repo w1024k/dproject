@@ -14,11 +14,11 @@ django_log = logging.error('django')
 
 
 @task
-def create_weixin_user(uid):
+def create_weixin_user(openid):
     client = tools.WeixinClient.instance()
     weixin_user = wechatpy.client.api.WeChatUser(client)
     try:
-        open_user = OpenUser.objects.get(supplier=settings.SupplierEnum.WECHAT, uid=uid)
+        open_user = OpenUser.objects.get(supplier=settings.SupplierEnum.WECHAT, openid=openid)
     except OpenUser.DoesNotExist:
         username = 'weixin_%s' % create_random_string(digits=10)
         with transaction.atomic():
@@ -27,7 +27,7 @@ def create_weixin_user(uid):
                 supplier=settings.SupplierEnum.WECHAT,
                 nickname=weixin_user['nickname'],
                 user=user,
-                uid=uid,
+                openid=openid,
             )
             Profile.objects.create(user=user,
                                    avatar_path=weixin_user['headimgurl'],

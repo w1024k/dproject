@@ -36,7 +36,7 @@ def notify(request):
             return HttpResponse(reply.render())
         # 取消关注
         elif isinstance(receive_msg, wechatpy.events.UnsubscribeEvent):
-            OpenUser.objects.filter(supplier=common_setting.SupplierEnum.WECHAT, uid=receive_msg.source).update(
+            OpenUser.objects.filter(supplier=common_setting.SupplierEnum.WECHAT, openid=receive_msg.source).update(
                 state=common_setting.StateEnum.DELETED)
             return HttpResponse('')
 
