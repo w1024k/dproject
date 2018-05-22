@@ -12,25 +12,25 @@ menu_data = {
     "button": [
         {
             "type": "location_select",
-            "name": "今日天气",
+            "name": u"今日天气",
             "key": "HELLO_ALWAYS_WEATHER"
         },
         {
-            "name": "菜单",
+            "name": u"菜单",
             "sub_button": [
                 {
                     "type": "view",
-                    "name": "搜索",
+                    "name": u"搜索",
                     "url": "http://www.baidu.com/"
                 },
                 {
                     "type": "view",
                     "name": "NBA",
-                    "url": "https://nba.sina.cn/?vt=4"
+                    "url": "http://nba.sina.cn/?vt=4"
                 },
                 {
                     "type": "click",
-                    "name": "昨日访问",
+                    "name": u"昨日访问",
                     "key": "HELLO_ALWAYS_YESTERDAY_VISIT"
                 },
             ]
