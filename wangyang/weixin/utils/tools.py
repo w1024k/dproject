@@ -12,9 +12,13 @@ class WeixinClient(wechatpy.WeChatClient):
     @staticmethod
     def instance():
         if not hasattr(WeixinClient, '_instance'):
-            access_token = WeixinClient(appid=settings.APPID, secret=settings.APPSECRET).get_access_token()
+            appid = settings.APPID
+            secret = settings.APPSECRET
+            print appid, 111
+            print secret, 222
+            access_token = WeixinClient(appid, secret).get_access_token()
             setattr(WeixinClient, '_instance',
-                    WeixinClient(appid=settings.APPID, secret=settings.APPSECRET, access_token=access_token))
+                    WeixinClient(appid, secret, access_token=access_token))
         return getattr(WeixinClient, '_instance')
 
     def get_access_token(self):
