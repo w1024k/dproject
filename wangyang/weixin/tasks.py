@@ -29,11 +29,16 @@ def create_weixin_user(openid):
                 user=user,
                 openid=openid,
             )
+            if int(weixin_user['sex']) in [settings.SexEnum.WOMAN, settings.SexEnum.MAN]:
+                sex = int(weixin_user['sex'])
+            else:
+                sex = settings.SexEnum.OTHER
+
             Profile.objects.create(user=user,
                                    avatar_path=weixin_user['headimgurl'],
-                                   address='-'.join([weixin_user['country'], weixin_user['province'], weixin_user['city']]),
-                                   sex=weixin_user['sex'] if weixin_user['sex'] in [settings.SexEnum.WOMAN,
-                                                                                    settings.SexEnum.MAN] else settings.SexEnum.OTHER, )
+                                   address='-'.join(
+                                       [weixin_user['country'], weixin_user['province'], weixin_user['city']]),
+                                   sex=sex)
     else:
         open_user.state = settings.StateEnum.VALID
         open_user.save()
