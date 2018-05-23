@@ -1,8 +1,5 @@
 # coding: utf-8
 
-
-from common import settings
-from common.models import UrlVisitCount, DailyCount
 from common.tasks import daily_visit_increase
 
 

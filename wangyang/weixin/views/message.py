@@ -1,5 +1,4 @@
 # coding=utf-8
-from django.shortcuts import render
 from django.http import HttpResponse
 from wechatpy.utils import check_signature
 from wechatpy.exceptions import InvalidSignatureException
@@ -8,6 +7,7 @@ import wechatpy
 from common.tools import auto_answer
 from common.models import OpenUser
 from common import settings as common_setting
+from weixin.utils import tools
 
 
 def notify(request):
@@ -44,16 +44,20 @@ def notify(request):
         elif isinstance(receive_msg, (wechatpy.events.ScanEvent, wechatpy.events.SubscribeScanEvent)):
             return HttpResponse('')
 
-        elif isinstance(receive_msg, wechatpy.events.LocationEvent):
+        elif isinstance(receive_msg, (wechatpy.events.LocationEvent, wechatpy.events.LocationSelectEvent)):
             print receive_msg
             receive_msg.msgtype = 'text'
             reply = wechatpy.replies.TextReply(content=u'位置上报成功', message=receive_msg)
             return HttpResponse(reply.render())
 
         elif isinstance(receive_msg, wechatpy.events.ClickEvent):
+            event_key = receive_msg['eventkey']
+            handler = tools.EventHandler(event_key)
+            visit_count = handler.get_event_handler()
             print receive_msg
             receive_msg.msgtype = 'text'
-            reply = wechatpy.replies.TextReply(content=u'触发点击事件', message=receive_msg)
+            reply = wechatpy.replies.TextReply(content=visit_count, message=receive_msg)
+
             return HttpResponse(reply.render())
 
         else:
