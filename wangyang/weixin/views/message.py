@@ -44,6 +44,18 @@ def notify(request):
         elif isinstance(receive_msg, (wechatpy.events.ScanEvent, wechatpy.events.SubscribeScanEvent)):
             return HttpResponse('')
 
+        elif isinstance(receive_msg, wechatpy.events.LocationEvent):
+            print receive_msg
+            receive_msg.msgtype = 'text'
+            reply = wechatpy.replies.TextReply(content=u'位置上报成功', message=receive_msg)
+            return HttpResponse(reply.render())
+
+        elif isinstance(receive_msg, wechatpy.events.ClickEvent):
+            print receive_msg
+            receive_msg.msgtype = 'text'
+            reply = wechatpy.replies.TextReply(content=u'触发点击事件', message=receive_msg)
+            return HttpResponse(reply.render())
+
         else:
             receive_msg.msgtype = 'text'
             reply = wechatpy.replies.TextReply(content=settings.ANSWER_MSG_LIST['PARSE_FAIL'], message=receive_msg)
