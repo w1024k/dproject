@@ -51,8 +51,7 @@ def notify(request):
             return HttpResponse(reply.render())
 
         elif isinstance(receive_msg, wechatpy.events.ClickEvent):
-            print receive_msg
-            event_key = receive_msg._data
+            event_key = receive_msg.key
             handler = tools.EventHandler(event_key)
             visit_count = handler.get_event_handler()
 
