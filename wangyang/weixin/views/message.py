@@ -52,7 +52,7 @@ def notify(request):
 
         elif isinstance(receive_msg, wechatpy.events.ClickEvent):
             print receive_msg
-            event_key = receive_msg.eventkey
+            event_key = receive_msg.EventKey
             handler = tools.EventHandler(event_key)
             visit_count = handler.get_event_handler()
 
