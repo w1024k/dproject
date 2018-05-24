@@ -47,5 +47,4 @@ class EventHandler(object):
         yesterday = datetime.today().date() + timedelta(-1)
         yesterday_count = DailyCount.objects.only('count').get(date=yesterday,
                                                                event=common_settings.CountEventEnum.URL_VISIT).count
-        today_count = get_redis().get(common_settings.URL_VISIT_DAILY_COUNT_KEY)
-        return yesterday_count, today_count
+        return yesterday_count

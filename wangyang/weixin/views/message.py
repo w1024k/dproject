@@ -51,12 +51,13 @@ def notify(request):
             return HttpResponse(reply.render())
 
         elif isinstance(receive_msg, wechatpy.events.ClickEvent):
-            event_key = receive_msg.key
-            handler = tools.EventHandler(event_key)
-            visit_count = handler.get_event_handler()
+
+            event_handler = tools.EventHandler(receive_msg.key)
+            visit_count = event_handler.get_event_handler()
 
             receive_msg.msgtype = 'text'
-            reply = wechatpy.replies.TextReply(content=visit_count, message=receive_msg)
+            reply = wechatpy.replies.TextReply(content=settings.ANSWER_MSG_LIST['SUBSCRIBE'] % visit_count,
+                                               message=receive_msg)
 
             return HttpResponse(reply.render())
 

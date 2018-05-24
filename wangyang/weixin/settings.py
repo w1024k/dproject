@@ -31,6 +31,7 @@ ERROR.update(settings.ERROR)
 ANSWER_MSG_LIST = {
     'PARSE_FAIL': u'我现在只方便看文字',
     'SUBSCRIBE': u'感谢你的关注',
+    'VISIT_COUNT': u'昨日访问量为%s次'
 }
 
 ACCESS_TOKE_CACHE_KEY = 'weixin.access.token.key'
