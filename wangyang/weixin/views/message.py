@@ -56,7 +56,7 @@ def notify(request):
             visit_count = event_handler.get_event_handler()
 
             receive_msg.msgtype = 'text'
-            reply = wechatpy.replies.TextReply(content=settings.ANSWER_MSG_LIST['SUBSCRIBE'] % visit_count,
+            reply = wechatpy.replies.TextReply(content=settings.ANSWER_MSG_LIST['SUBSCRIBE'] % str(visit_count),
                                                message=receive_msg)
 
             return HttpResponse(reply.render())
