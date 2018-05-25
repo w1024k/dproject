@@ -10,12 +10,22 @@ import ujson as json
 menu_data = {
     "button": [
         {
-            "type": "location_select",
-            "name": "今日天气",
-            "key": "HELLO_ALWAYS_WEATHER"
+            "name": "菜单",
+            "sub_button": [
+                {
+                    "type": "location_select",
+                    "name": "今日天气",
+                    "key": "HELLO_ALWAYS_WEATHER"
+                },
+                {
+                    "type": "click",
+                    "name": "昨日访问",
+                    "key": "HELLO_ALWAYS_YESTERDAY_VISIT"
+                },
+            ]
         },
         {
-            "name": "菜单",
+            "name": "工具",
             "sub_button": [
                 {
                     "type": "view",
@@ -28,9 +38,9 @@ menu_data = {
                     "url": "http://nba.sina.cn/?vt=4"
                 },
                 {
-                    "type": "click",
-                    "name": "昨日访问",
-                    "key": "HELLO_ALWAYS_YESTERDAY_VISIT"
+                    "type": "view",
+                    "name": "低调看",
+                    "url": "http://m.didiaokan.com/m.html"
                 },
             ]
         }]
