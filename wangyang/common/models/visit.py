@@ -5,7 +5,8 @@ from common import settings
 
 
 # Create your models here.
-class UrlVisitCount(TimeModel):
+class UrlVisitCount(models.Model):
+    create_time = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=u'创建时间')
     client_ip = models.GenericIPAddressField(default=settings.DEFAULT_IP, verbose_name=u'客户端IP')
     url = models.CharField(default=settings.DEFAULT_URL, max_length=128, verbose_name=u'链接地址')
 
