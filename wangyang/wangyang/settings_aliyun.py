@@ -86,3 +86,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 TOKEN = 'wangyang'
 APPID = 'wx2d7d831e6aceea11'
 APPSECRET = '44d7ab4231ab6709e306938f97e505a6'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
