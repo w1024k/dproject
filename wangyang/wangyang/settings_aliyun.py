@@ -75,7 +75,7 @@ EMAIL_HOST_PASSWORD = 'wangyang001'  # 授权码
 EMAIL_USE_TLS = True  # 开启安全链接
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # 设置发件人
 
-STATIC_URL = 'http://static.wangyang.com/static/'
+STATIC_URL = 'http://static.w1024k.top/static/'
 # 搜集目录
 STATIC_ROOT = '/home/wang/media/wang/static/'
 
