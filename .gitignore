@@ -2,4 +2,4 @@
 *.pyc
 *.log
 manage.py
-static/images
+images/*

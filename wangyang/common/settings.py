@@ -57,3 +57,7 @@ ROBOT_API = 'http://api.qingyunke.com/api.php?key=free&appid=0&msg='
 ROBOT_API_ERROR = u'机器人客服打盹了'
 
 DEFAULT_AVATAR_PATH = '/static/images/avatar.jpg'
+
+QINIU_ACCESSKEY = 'JkmVZKPlN7lHIq2s15UXe4ocRSPX0IgKyIBbPw_8'
+QINIU_SECRETKEY = 'BQL-mTutx_woOqAPoea4UmH5CTIx9P6Ls-RmpsC8'
+BUCKET_NAME = 'wangyang'
