@@ -77,7 +77,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # 设置发件人
 
 STATIC_URL = 'http://static.wangyang.com/static/'
 # 搜集目录
-STATIC_ROOT = '/home/wang/media/wang/static'
+STATIC_ROOT = '/home/wang/media/wang/static/'
 
 # app目录 额外的静态文件
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
