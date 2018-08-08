@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^wangyang/admin/', include(admin.site.urls)),
     url(r'^wangyang/lm/', include('lm.urls')),
     url(r'^wangyang/weixin/', include('weixin.url')),
+    url(r'^wangyang/wechat/', include('wechat.url')),
 ]

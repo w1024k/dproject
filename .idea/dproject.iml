@@ -17,6 +17,11 @@
     </content>
     <orderEntry type="jdk" jdkName="Python 2.7.10 virtualenv at /usr/local/var/pyenv/versions/env271" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="idjango" />
+    <orderEntry type="module" module-name="us_and_them" />
+    <orderEntry type="module" module-name="wbb" />
+    <orderEntry type="module" module-name="fweixin" />
+    <orderEntry type="module" module-name="proxy_pool-master" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

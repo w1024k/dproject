@@ -3,6 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/dproject.iml" filepath="$PROJECT_DIR$/.idea/dproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fweixin/.idea/fweixin.iml" filepath="$PROJECT_DIR$/../fweixin/.idea/fweixin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../person/django_code/idjango/.idea/idjango.iml" filepath="$PROJECT_DIR$/../../person/django_code/idjango/.idea/idjango.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/proxy_pool-master/.idea/proxy_pool-master.iml" filepath="$USER_HOME$/Downloads/proxy_pool-master/.idea/proxy_pool-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../us_and_them/.idea/us_and_them.iml" filepath="$PROJECT_DIR$/../../us_and_them/.idea/us_and_them.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../wbb/.idea/wbb.iml" filepath="$PROJECT_DIR$/../../wbb/.idea/wbb.iml" />
     </modules>
   </component>
 </project>
