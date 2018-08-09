@@ -9,6 +9,7 @@ from wechat import settings as wechat_setting
 def login(request):
     login_thread = threading.Thread(target=itchat.auto_login,
                                     kwargs=(dict(hotReload=True,
+                                                 statusStorageDir=wechat_setting.PKL,
                                                  picDir=wechat_setting.PIC_DIR)))
     while os.path.exists(wechat_setting.PIC_DIR):
         pic = open(wechat_setting.PIC_DIR, 'rb')
