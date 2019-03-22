@@ -1,5 +1,10 @@
 #python
 *.pyc
 *.log
-manage.py
+*.pid
 images/*
+qr.png
+itchat.pkl
+.pydevproject
+.settings/*
+tmp/*

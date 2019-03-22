@@ -1,0 +1,48 @@
+version: '3'
+services:
+  web:
+    image: djangoweb:v1
+    container_name: djangoweb
+    build: ./web/
+    ports:
+      - "8001:8000"
+    volumes:
+      - /root/djangoDocker/web/code/dproject:/root/dproject
+      - /media/www:/media/www
+      - /var/log/www/web:/var/log
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      - net1
+
+  redis:
+    #daemonize设置为yes启动不了
+
+    image: redis:v1
+    container_name: redis_v1
+    build: ./redis/
+    volumes:
+      - /usr/local/www/redis/data:/data
+    networks:
+      - net1
+
+
+  mysql:
+    #进入mysql客户端
+    #docker run -it --network djangodocker_net1 --rm mysql:5.7 mysql -hmysql_v1 -uroot -p
+    image: mysql:5.7
+    container_name: mysql_v1
+    volumes:
+      - /var/log/www/mysql:/logs
+      - /usr/local/www/mysql/data:/var/lib/mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+
+    networks:
+      - net1
+
+networks:
+  net1:
+    driver: bridge

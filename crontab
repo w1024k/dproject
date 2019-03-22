@@ -1,0 +1,2 @@
+0 0 * * * docker exec -it djangoweb python /root/dproject/wangyang/manage.py update_visit_count
+0 0 1 * * docker exec -it djangoweb python /root/dproject/wangyang/manage.py clear_visit_count
